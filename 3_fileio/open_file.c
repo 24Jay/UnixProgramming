@@ -11,6 +11,10 @@ int main(void)
 	char buf[BUFFSIZE];
 	int n;
 	int fd = open("test.txt",O_RDWR,FILE_MODE);
+	//int fd = open(file,O_RDWR,FILE_MODE);
+	if(fd<0)
+		err_sys("open filed error!");
+
 //	printf("fd=%d\n",fd);
 	while((n=read(fd,buf,BUFFSIZE))>0)
 	{
@@ -21,5 +25,6 @@ int main(void)
 	}
 	if(n<0)
 		err_sys("read error");
+	close(fd);
 	exit(0);
 }
