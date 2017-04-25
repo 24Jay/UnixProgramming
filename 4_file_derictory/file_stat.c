@@ -14,9 +14,12 @@ int main(int argc, char *argv[])
 			err_ret("lstat error!");
 			continue;
 		}
-		printf("uid: %ld\n", (long int)buf.st_uid);
-		printf("gid: %ld\n", (long int)buf.st_gid);
-		printf("size: %ld\n", (long int)buf.st_size);
+
+		printf("process_uid: %d\n", getuid());
+		printf("process_gid: %d\n", getgid());
+		printf("file_uid: %ld\n", (long int)buf.st_uid);
+		printf("file_gid: %ld\n", (long int)buf.st_gid);
+		printf("file_size: %ld\n", (long int)buf.st_size);
 		if(S_ISREG(buf.st_mode))
 			ptr = "regular";
 		else if(S_ISDIR(buf.st_mode))
