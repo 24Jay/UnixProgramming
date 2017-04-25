@@ -8,13 +8,15 @@ int main(int argc, char *argv[])
 
 	for(i = 1;i<argc;i++)
 	{
-		printf("%s: ",argv[i]);
+		printf("%s:\n",argv[i]);
 		if(lstat(argv[i],&buf)<0)
 		{
 			err_ret("lstat error!");
 			continue;
 		}
-		printf("uid----->%s\n",buf.st_uid);
+		printf("uid: %ld\n", (long int)buf.st_uid);
+		printf("gid: %ld\n", (long int)buf.st_gid);
+		printf("size: %ld\n", (long int)buf.st_size);
 		if(S_ISREG(buf.st_mode))
 			ptr = "regular";
 		else if(S_ISDIR(buf.st_mode))
@@ -25,3 +27,4 @@ int main(int argc, char *argv[])
 	}
 	exit(0);
 }
+
