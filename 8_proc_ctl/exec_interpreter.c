@@ -9,7 +9,7 @@ int main(void)
 		err_sys("fork error!");
 	else if(pid == 0)
 	{
-		if(execl("/home/jay/unix/8_proc_ctl/test.sh","test.sh","参数2","参数3","参数4",(char *)0)<0)
+		if(execl("/home/jay/unix/8_proc_ctl/echo_environ.sh","echo_environ.sh","参数2","参数3","参数4",(char *)0)<0)
 		{
 			err_sys("execl error");
 		}
